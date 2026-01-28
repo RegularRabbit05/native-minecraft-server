@@ -3,7 +3,10 @@
 set -o errexit
 set -o nounset
 
-SERVER_JAR_DL="https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar"
+SERRVER_VERSION="1.21.11"
+SERVER_MANIFEST_URL="$(curl "https://piston-meta.mojang.com/mc/game/version_manifest.json" | jq -r ".versions[] | select(.id == \"${SERRVER_VERSION}\") | .url")"
+
+SERVER_JAR_DL="$(curl "$SERVER_MANIFEST_URL" | jq -r ".downloads.server.url")"
 SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 BUILD_DIR="${SCRIPT_DIR}/build"
 JAR_PATH="${BUILD_DIR}/server.jar"
@@ -57,6 +60,8 @@ pushd "${META_INF_PATH}" > /dev/null
     --enable-url-protocols=https \
     --initialize-at-run-time=io.netty \
     -H:+AllowVMInspection \
+    -H:+SharedArenaSupport \
+    --enable-native-access=ALL-UNNAMED \
     --initialize-at-build-time=net.minecraft.util.profiling.jfr.event \
     -H:Name="${BINARY_NAME}" \
     -cp "${CLASSPATH_JOINED//;/:}" \

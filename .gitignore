@@ -7,3 +7,13 @@ native-minecraft-server
 server.properties
 sources
 world
+# Generate reachability data
+generate-reachability/node_modules/
+generate-reachability/reflection-config/
+generate-reachability/libraries/
+generate-reachability/versions/
+generate-reachability/*.json
+generate-reachability/profiles/
+!generate-reachability/server.properties
+!generate-reachability/eula.txt
+!generate-reachability/package.json
