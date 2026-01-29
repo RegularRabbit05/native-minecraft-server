@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
-args="$(node ping-wait.js)"
+ARGS="$(node ping-wait.js)"
+readonly ARGS
+
 echo "Server started up, connecting"
-node connect_server.js $args
+node connect_server.js $ARGS

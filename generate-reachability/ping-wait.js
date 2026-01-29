@@ -1,5 +1,4 @@
-const mineflayer = require("mineflayer");
-const { ping, supportedVersions } = require("minecraft-protocol");
+const { ping } = require("minecraft-protocol");
 
 function checkServerStatus(host, port = 25565) {
   return new Promise((resolve, reject) =>

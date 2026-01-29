@@ -1,3 +1,9 @@
+/**
+ * Get the difference in version between two versions (each version segment in version a - each version segment in version b)
+ * @param {string} versiona The first version
+ * @param {string} versionb The second version
+ * @returns The difference between the two versions
+ */
 function versionDifference(versiona, versionb) {
   const splitA = versiona.split(".");
   const splitB = versionb.split(".");
@@ -11,9 +17,9 @@ function versionDifference(versiona, versionb) {
 }
 
 /**
- *
- * @param {string[]} values
- * @returns
+ * Sort an array of versions from oldest - newest
+ * @param {string[]} values The versions to sort
+ * @returns The sorted versions
  */
 function sortVersions(values) {
   return values.sort((a, b) => {
@@ -29,10 +35,10 @@ function sortVersions(values) {
   });
 }
 /**
- *
- * @param {string} version
- * @param {string[]} contenders
- * @returns
+ * Get the nearest version in an array of versions to a provided version
+ * @param {string} version The version to try to find the nearest version to
+ * @param {string[]} contenders The versions to pick from
+ * @returns The nearest version in the versions to pick from
  */
 function nearestVersion(version, contenders) {
   if (contenders.includes(version)) {

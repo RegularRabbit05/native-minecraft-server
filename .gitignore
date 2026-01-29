@@ -8,8 +8,9 @@ server.properties
 sources
 world
 # Generate reachability data
+configuration/reachability-metadata.json
 generate-reachability/node_modules/
-generate-reachability/reflection-config/
+generate-reachability/reachability-config/
 generate-reachability/libraries/
 generate-reachability/versions/
 generate-reachability/*.json

@@ -8,12 +8,13 @@ SERVER_MANIFEST_URL="$(curl "https://piston-meta.mojang.com/mc/game/version_mani
 
 SERVER_JAR_DL="$(curl "$SERVER_MANIFEST_URL" | jq -r ".downloads.server.url")"
 SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+REACHABILITY_GENERATOR_DIR="${SCRIPT_DIR}/generate-reachability"
 BUILD_DIR="${SCRIPT_DIR}/build"
 JAR_PATH="${BUILD_DIR}/server.jar"
 META_INF_PATH="${BUILD_DIR}/META-INF"
 BINARY_NAME="native-minecraft-server"
 NI_EXEC="${GRAALVM_HOME:-}/bin/native-image"
-readonly SERVER_JAR_DL SCRIPT_DIR BUILD_DIR JAR_PATH META_INF_PATH BINARY_NAME NI_EXEC
+readonly SERVER_JAR_DL SCRIPT_DIR REACHABILITY_GENERATOR_DIR BUILD_DIR JAR_PATH META_INF_PATH BINARY_NAME NI_EXEC
 
 if [[ -z "${GRAALVM_HOME:-}" ]]; then
     echo "\$GRAALVM_HOME is not set. Please provide a GraalVM installation. Exiting..."
@@ -34,6 +35,13 @@ if [[ ! -f "${JAR_PATH}" ]]; then
     echo "Downloading Minecraft's server.jar..."
     curl --show-error --fail --location -o "${JAR_PATH}" "${SERVER_JAR_DL}"
 fi
+
+pushd "${REACHABILITY_GENERATOR_DIR}" > /dev/null
+"${REACHABILITY_GENERATOR_DIR}/main.sh"
+cp -a "${REACHABILITY_GENERATOR_DIR}/reachability-config/." "${SCRIPT_DIR}/configuration/"
+rm -f "${SCRIPT_DIR}/configuration/.lock" # If it copied over a lock, remove it
+
+popd > /dev/null
 
 if [[ ! -d "${META_INF_PATH}" ]]; then
     echo "Extracting resources from Minecraft's server.jar..."
