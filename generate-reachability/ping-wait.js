@@ -1,15 +1,22 @@
 const { ping } = require("minecraft-protocol");
 
+const timeout = 2;
+
 function checkServerStatus(host, port = 25565) {
-  return new Promise((resolve, reject) =>
-    ping({ host, port }, (err, data) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(data);
-      }
+  return Promise.race([
+    new Promise((resolve, reject) => {
+      ping({ host, port }, (err, data) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(data);
+        }
+      });
     }),
-  );
+    new Promise((_, reject) => {
+      setTimeout(() => reject(new Error("Timed out")), timeout * 1000);
+    }),
+  ]);
 }
 const delay = 5;
 
