@@ -32,5 +32,10 @@ const delay = 5;
       await new Promise((resolve) => setTimeout(resolve, delay * 1000));
     }
   }
-  console.log(`${status.version.name} ${status.version.protocol}`);
+  process.stdout.write(
+    `${status.version.name} ${status.version.protocol}`,
+    () => {
+      process.exit(0);
+    },
+  );
 })();
