@@ -38,7 +38,7 @@ fi
 
 pushd "${REACHABILITY_GENERATOR_DIR}" > /dev/null
 "${REACHABILITY_GENERATOR_DIR}/main.sh"
-cp -a "${REACHABILITY_GENERATOR_DIR}/reachability-config/." "${SCRIPT_DIR}/configuration/"
+cp "${REACHABILITY_GENERATOR_DIR}/reachability-config/"* "${SCRIPT_DIR}/configuration/"
 rm -f "${SCRIPT_DIR}/configuration/.lock" # If it copied over a lock, remove it
 
 popd > /dev/null
