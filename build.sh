@@ -38,6 +38,7 @@ fi
 
 pushd "${REACHABILITY_GENERATOR_DIR}" > /dev/null
 "${REACHABILITY_GENERATOR_DIR}/main.sh"
+sleep 2 # Wait for server to shut down
 cp "${REACHABILITY_GENERATOR_DIR}/reachability-config/"* "${SCRIPT_DIR}/configuration/"
 rm -f "${SCRIPT_DIR}/configuration/.lock" # If it copied over a lock, remove it
 
