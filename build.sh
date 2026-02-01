@@ -74,6 +74,7 @@ pushd "${META_INF_PATH}" > /dev/null
     --initialize-at-build-time=net.minecraft.util.profiling.jfr.event \
     -H:Name="${BINARY_NAME}" \
     -cp "${CLASSPATH_JOINED//;/:}" \
+    "$@" \
     "${MAIN_CLASS}"
 mv "${BINARY_NAME}" "${SCRIPT_DIR}/${BINARY_NAME}"
 popd > /dev/null # Exit $META_INF_PATH
