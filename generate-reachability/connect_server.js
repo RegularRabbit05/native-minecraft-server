@@ -1,5 +1,6 @@
 const serverVersionName = process.argv[2];
 const serverProtoVersion = Number(process.argv[3]);
+const minecraftUsername = process.argv[4];
 
 const mcdata = require("minecraft-data/data.js").pc;
 const { nearestVersion, sortVersions } = require("./versionUtils.js");
@@ -47,7 +48,7 @@ const { ping } = require("minecraft-protocol");
     host: "127.0.0.1", // Replace with your server's IP or domain
     port: 25565, // Default Minecraft port
     auth: "microsoft",
-    username: "MidwayDesert719",
+    username: minecraftUsername,
     "profilesFolder": "./profiles"
   });
 

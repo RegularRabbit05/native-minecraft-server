@@ -4,6 +4,11 @@ if [[ -z "${GRAALVM_HOME:-}" ]]; then
     exit 1
 fi
 
+if [[ -z "${MINECRAFT_USERNAME}" ]]; then
+    echo "\$MINECRAFT_USERNAME is not set. Please provide a minecraft username. Exiting..."
+    exit 1
+fi
+
 if [[ ! -x "$(which node)" ]]; then
     echo "node is not found on path. Please install node.js. Exiting..."
     exit 1
@@ -17,7 +22,7 @@ fi
 npm i
 
 PATH="$GRAALVM_HOME/bin:$PATH"
-./connect.sh &
+./connect.sh "$MINECRAFT_USERNAME" &
 
 CONNECT_PID="$!"
 readonly CONNECT_PID
