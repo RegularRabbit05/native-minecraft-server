@@ -1,0 +1,7 @@
+Package: !pkgname!-alpine-linux
+Version: !pkgver!
+Section: libs
+Priority: optional
+Architecture: !arch!
+Maintainer: !maintainer!
+Description: !pkgdesc! Repackaged from Alpine Linux.

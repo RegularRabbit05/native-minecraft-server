@@ -1,0 +1,25 @@
+{
+  "name": "apk.js",
+  "version": "1.0.0",
+  "description": "Download apk files",
+  "license": "MIT",
+  "author": "Coolchickenguy",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@chickenjdk/common": "^2.2.0",
+    "@types/tar-fs": "^2.0.4",
+    "commander": "^14.0.3",
+    "follow-redirects": "^1.15.11",
+    "pump": "^3.0.4",
+    "tar-fs": "^3.1.2"
+  },
+  "devDependencies": {
+    "@types/follow-redirects": "^1.14.4",
+    "@types/node": "^18.19.130",
+    "@types/pump": "^1.1.3"
+  }
+}

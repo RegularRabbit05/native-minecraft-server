@@ -9,7 +9,6 @@ sources
 world
 # Generate reachability data
 configuration/reachability-metadata.json
-generate-reachability/node_modules/
 generate-reachability/reachability-config/
 generate-reachability/libraries/
 generate-reachability/versions/
@@ -18,3 +17,10 @@ generate-reachability/profiles/
 !generate-reachability/server.properties
 !generate-reachability/eula.txt
 !generate-reachability/package.json
+# Node.js
+node_modules/
+# Apk.js
+apk-cache/
+packages/
+# Docker
+cache/

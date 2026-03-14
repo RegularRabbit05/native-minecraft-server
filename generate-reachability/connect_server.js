@@ -40,7 +40,7 @@ if (!mineflayerVersionSupport.testedVersions.includes(serverVersionName)) {
 }
 // Actual code
 const mineflayer = require("mineflayer");
-const { ping } = require("minecraft-protocol");
+const fs = require("fs");
 
 (async () => {
   // Create a bot to connect to the server
@@ -49,7 +49,7 @@ const { ping } = require("minecraft-protocol");
     port: 25565, // Default Minecraft port
     auth: "microsoft",
     username: minecraftUsername,
-    "profilesFolder": "./profiles"
+    profilesFolder: "../cache/profiles",
   });
 
   bot.once("spawn", () => {
