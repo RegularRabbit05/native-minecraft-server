@@ -47,7 +47,6 @@ const fs = require("fs");
   const bot = mineflayer.createBot({
     host: "127.0.0.1", // Replace with your server's IP or domain
     port: 25565, // Default Minecraft port
-    auth: "microsoft",
     username: minecraftUsername,
     profilesFolder: "../cache/profiles",
   });

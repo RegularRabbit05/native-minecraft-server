@@ -34,7 +34,7 @@ Finally, and only if [upx] is on the `$PATH`, the script will compress the nativ
 
 ## Limitations and Known Issues
 
-- The configuration currently only supports Minecraft `1.18.2`.
+- The configuration currently only supports Minecraft `26.1.2`.
 - The server GUI is not yet supported.
 - Mods are currently not supported.
 - There is no build script for Windows yet, but the [WSL] should work.

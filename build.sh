@@ -3,7 +3,7 @@
 set -o errexit
 set -o nounset
 
-SERVER_VERSION="${SERVER_VERSION:-"1.21.11"}"
+SERVER_VERSION="${SERVER_VERSION:-"26.1.2"}"
 SERVER_MANIFEST_URL="$(curl "https://piston-meta.mojang.com/mc/game/version_manifest.json" | jq -r ".versions[] | select(.id == \"${SERVER_VERSION}\") | .url")"
 
 SERVER_JAR_DL="$(curl "$SERVER_MANIFEST_URL" | jq -r ".downloads.server.url")"
